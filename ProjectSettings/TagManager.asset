@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - AI Sound Emitter
+  - AI Visual
+  - AI Food
+  - Flash Light
   layers:
   - Default
   - TransparentFX
@@ -13,13 +17,13 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - AI Entity
+  - AI Entity Trigger
+  - AI Trigger
+  - Visual Aggravator
+  - Audio Aggravator
+  - Player
+  - AI Body Part
   - 
   - 
   - 

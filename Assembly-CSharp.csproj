@@ -63,9 +63,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Dead Earth\Scripts\AIWaypointNetwork.cs" />
-    <Compile Include="Assets\Navigation Example\NavAgentExample.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AISensor.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIState.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIStateMachine.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIWaypointNetwork.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieStateMachine.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\State Machine Behavious\AIStateMachineLink.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\State Machine Behavious\RootMotionConfigurator.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\GameSceneManager.cs" />
+    <Compile Include="Assets\Navigation Example\Controller.cs" />
+    <Compile Include="Assets\Navigation Example\NavAgentNoRootMotion.cs" />
+    <Compile Include="Assets\Navigation Example\NavAgentRootMotion.cs" />
     <Compile Include="Assets\Navigation Example\SlidingDoorDemo.cs" />
+    <Compile Include="Assets\Navigation Example\SmoothCameraMount.cs" />
+    <Compile Include="Assets\Navigation Example\SpeedController.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/毕业设计/New Unity Project (3)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
