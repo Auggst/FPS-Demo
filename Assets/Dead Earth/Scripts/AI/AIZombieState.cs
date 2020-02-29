@@ -21,7 +21,7 @@ public abstract class AIZombieState : AIState
 
     public override void SetStateMachine(AIStateMachine stateMachine)
     {
-        if(_stateMachine.GetType()==typeof(AIZombieStateMachine))
+        if(stateMachine.GetType()==typeof(AIZombieStateMachine))
         {
             base.SetStateMachine(stateMachine);
             _zombieStateMachine = (AIZombieStateMachine)stateMachine;
@@ -51,8 +51,8 @@ public abstract class AIZombieState : AIState
                 }
             }
             else
-           if (other.CompareTag("Flash Light") && curType != AITargetType.Visual_Player)
-            {
+            if (other.CompareTag("Flash Light") && curType != AITargetType.Visual_Player)
+             {
                 BoxCollider flashLightTrigger = (BoxCollider)other;
                 float distanceToThreat = Vector3.Distance(_zombieStateMachine.sensorPosition, flashLightTrigger.transform.position);
                 float zSize = flashLightTrigger.size.z * flashLightTrigger.transform.lossyScale.z;
@@ -61,9 +61,9 @@ public abstract class AIZombieState : AIState
                 {
                     _zombieStateMachine.VisualThreat.Set(AITargetType.Visual_Light, other, other.transform.position, distanceToThreat);
                 }
-            }
-            else if(other.CompareTag("AI Sound Emitter"))
-            {
+             }
+             else if(other.CompareTag("AI Sound Emitter"))
+             {
                 SphereCollider soundTrigger = (SphereCollider)other;
                 if (soundTrigger == null) return;
 
@@ -85,7 +85,7 @@ public abstract class AIZombieState : AIState
                 {
                     _zombieStateMachine.AudioThreat.Set(AITargetType.Audio, other, soundPos, distanceToThreat);
                 }
-            }
+             }
             else if(other.CompareTag("AI Food")&& curType!=AITargetType.Visual_Player&&curType!=AITargetType.Visual_Light&&
                 _zombieStateMachine.satisfaction<=0.9f && _zombieStateMachine.AudioThreat.type == AITargetType.None)
             {
@@ -105,7 +105,7 @@ public abstract class AIZombieState : AIState
     protected virtual bool ColliderIsVisible(Collider other,out RaycastHit hitInfo,int layerMask=-1)
     {
         hitInfo = new RaycastHit();
-        if (_stateMachine == null) return false;
+        if (_zombieStateMachine == null) return false;
 
         Vector3 head = _stateMachine.sensorPosition;
         Vector3 direction = other.transform.position - head;

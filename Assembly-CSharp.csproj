@@ -68,6 +68,11 @@
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIStateMachine.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIWaypointNetwork.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Alerted1.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Feeding1.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Idle1.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Patrol1.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Pursuit1.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieStateMachine.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\State Machine Behavious\AIStateMachineLink.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\State Machine Behavious\RootMotionConfigurator.cs" />
