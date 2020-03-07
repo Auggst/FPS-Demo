@@ -51,7 +51,7 @@ public class AIZombieState_Feeding1 : AIZombieState
     }
 
     // -------------------------------------------------------------------------
-    // 类	    :	OnUpdate
+    // 方法	    :	OnUpdate
     // 介绍		:	主要逻辑
     // -------------------------------------------------------------------------
     public override AIStateType OnUpdate()
@@ -89,8 +89,8 @@ public class AIZombieState_Feeding1 : AIZombieState
                     ParticleSystem system = GameSceneManager.instance.bloodParticles;
                     system.transform.position = _bloodParticleMount.transform.position;
                     system.transform.rotation = _bloodParticleMount.transform.rotation;
-                    //TODO 弃用修改
-                    system.simulationSpace = ParticleSystemSimulationSpace.World;
+                    var settings = system.main;
+                    settings.simulationSpace = ParticleSystemSimulationSpace.World;
                     system.Emit(_bloodParticlesBurstAmount);
                     _timer = 0.0f;
                 }

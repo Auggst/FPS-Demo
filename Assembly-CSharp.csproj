@@ -63,26 +63,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIDamageTrigger.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AISensor.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIState.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIStateMachine.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIWaypointNetwork.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Alerted1.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Attack1.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Feeding1.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Idle1.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Patrol1.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieState_Pursuit1.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\AIZombieStateMachine.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\MeleeZoneTrigger.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\State Machine Behavious\AIStateMachineLink.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\AI\State Machine Behavious\CinematicEnabler.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\AI\State Machine Behavious\RootMotionConfigurator.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\FPS Controller\CharacterManager.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\FPS Controller\FPSController.cs" />
     <Compile Include="Assets\Dead Earth\Scripts\GameSceneManager.cs" />
+    <Compile Include="Assets\Dead Earth\Scripts\Image Effects\CameraBloodEffect.cs" />
     <Compile Include="Assets\Navigation Example\Controller.cs" />
     <Compile Include="Assets\Navigation Example\NavAgentNoRootMotion.cs" />
     <Compile Include="Assets\Navigation Example\NavAgentRootMotion.cs" />
     <Compile Include="Assets\Navigation Example\SlidingDoorDemo.cs" />
     <Compile Include="Assets\Navigation Example\SmoothCameraMount.cs" />
     <Compile Include="Assets\Navigation Example\SpeedController.cs" />
+    <None Include="Assets\Dead Earth\Shader\CameraBloodEffect.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/毕业设计/New Unity Project (3)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

@@ -9,6 +9,8 @@ using UnityEngine;
 public class AIZombieState_Pursuit1 : AIZombieState
 {
     [SerializeField] [Range(0, 10)] private float _speed = 1.0f;
+    [SerializeField] [Range(0.0f, 1.0f)] float _lookAtWeight = 0.7f;
+    [SerializeField] [Range(0.0f, 90.0f)] float _lookAtAngleThreshold = 15.0f;
     [SerializeField] private float _slerpSpeed = 5.0f;
     [SerializeField] private float _repathDistanceMultiplier = 0.035f;
     [SerializeField] private float _repathVisualMinDuration = 0.05f;
@@ -17,8 +19,11 @@ public class AIZombieState_Pursuit1 : AIZombieState
     [SerializeField] private float _repathAudioMaxDuration = 5.0f;
     [SerializeField] private float _maxDuration = 40.0f;
 
+
     private float _timer = 0.0f;
     private float _repathTimer = 0.0f;
+
+    private float _currentLookAtWeight = 0.0f;
 
     public override AIStateType GetStateType()
     {
@@ -43,6 +48,8 @@ public class AIZombieState_Pursuit1 : AIZombieState
 
         _zombieStateMachine.navAgent.SetDestination(_zombieStateMachine.targetPosition);
         _zombieStateMachine.navAgent.isStopped = false;
+
+        _currentLookAtWeight = 0.0f;
     }
 
     // ---------------------------------------------------------------------
@@ -211,6 +218,21 @@ public class AIZombieState_Pursuit1 : AIZombieState
         return AIStateType.Pursuit;
     }
 
+    public override void OnAnimatorIKUpdated()
+    {
+        if (_zombieStateMachine == null) return;
+        if (Vector3.Angle(_zombieStateMachine.transform.forward, _zombieStateMachine.targetPosition - _zombieStateMachine.transform.position) < _lookAtAngleThreshold)
+        {
+            _zombieStateMachine.animator.SetLookAtPosition(_zombieStateMachine.targetPosition + Vector3.up);
+            _currentLookAtWeight = Mathf.Lerp(_currentLookAtWeight, _lookAtWeight, Time.deltaTime);
+            _zombieStateMachine.animator.SetLookAtWeight(_currentLookAtWeight);
+        }
+        else
+        {
+            _currentLookAtWeight = Mathf.Lerp(_currentLookAtWeight, 0.0f, Time.deltaTime);
+            _zombieStateMachine.animator.SetLookAtWeight(_currentLookAtWeight);
+        }
+    }
 
 
 }

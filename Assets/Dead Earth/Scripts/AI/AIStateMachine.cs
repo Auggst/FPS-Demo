@@ -57,8 +57,13 @@ public abstract class AIStateMachine : MonoBehaviour
     protected int _rootPositionRefCount = 0;
     protected int _rootRotationRefCount = 0;
     protected bool _isTargetReached = false;
+    protected List<Rigidbody> _bodyPrats = new List<Rigidbody>();
+    protected int _aiBodyPartLayer = -1;
+    protected bool _cinematicEnabled = false;
+
 
     [SerializeField] protected AIStateType _currentStateType = AIStateType.Idle;
+    [SerializeField] Transform _rootBone = null;
     [SerializeField] protected SphereCollider _targetTrigger = null;
     [SerializeField] protected SphereCollider _sensorTrigger = null;
     [SerializeField] AIWaypointNetwork _waypointNetwork = null;
@@ -115,7 +120,11 @@ public abstract class AIStateMachine : MonoBehaviour
                 return -1;
         }
     }
-
+    public bool cinematicEnabled
+    {
+        get { return _cinematicEnabled; }
+        set { _cinematicEnabled = value; }
+    }
 
     protected virtual void Awake()
     {
@@ -124,11 +133,28 @@ public abstract class AIStateMachine : MonoBehaviour
         _navAgent = GetComponent<NavMeshAgent>();
         _collider = GetComponent<Collider>();
 
+        _aiBodyPartLayer = LayerMask.NameToLayer("AI Body Part");
+
         if(GameSceneManager.instance!=null)
         {
             if (_collider) GameSceneManager.instance.RegisterAIStateMachine(_collider.GetInstanceID(), this);
             if (_sensorTrigger) GameSceneManager.instance.RegisterAIStateMachine(_sensorTrigger.GetInstanceID(), this);
         }
+
+        if(_rootBone!=null)
+        {
+            Rigidbody[] bodies = _rootBone.GetComponentsInChildren<Rigidbody>();
+
+            foreach(Rigidbody bodyPart in bodies)
+            {
+                if(bodyPart!=null && bodyPart.gameObject.layer == _aiBodyPartLayer)
+                {
+                    _bodyPrats.Add(bodyPart);
+                    GameSceneManager.instance.RegisterAIStateMachine(bodyPart.GetInstanceID(), this);
+                }
+            }
+        }
+
     }
 
     protected virtual void Start()
@@ -350,5 +376,10 @@ public abstract class AIStateMachine : MonoBehaviour
     {
         _rootPositionRefCount += rootPosition;
         _rootRotationRefCount += rootRotation;
+    }
+
+    public virtual void TakeDamage(Vector3 position,Vector3 force,int damage, Rigidbody bodyPart, CharacterManager characterManager, int hitDirection = 0)
+    { 
+       
     }
 }

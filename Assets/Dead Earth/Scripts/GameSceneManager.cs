@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class PlayerInfo
+{
+    public Collider collider = null;
+    public CharacterManager characterManager = null;
+    public Camera camera = null;
+    public CapsuleCollider meleeTrigger = null; 
+}
+
 // -------------------------------------------------------------------------
 // 类	    :	GameSceneManager
 // 介绍		:	作为场景管理的单例模式的类
@@ -26,6 +34,7 @@ public class GameSceneManager : MonoBehaviour
     }
 
     private Dictionary<int, AIStateMachine> _stateMachines = new Dictionary<int, AIStateMachine>();
+    private Dictionary<int, PlayerInfo> _playerInfos = new Dictionary<int, PlayerInfo>();
 
     public ParticleSystem bloodParticles { get { return _bloodParticles; } }
 
@@ -55,5 +64,29 @@ public class GameSceneManager : MonoBehaviour
         return null;
     }
 
+    // -------------------------------------------------------------------------
+    // 类	    :	RegisterPlayerInfo
+    // 介绍		:	用字典类型来存储已出现的PlayerInfo
+    // -------------------------------------------------------------------------
+    public void RegisterPlayerInfo(int key, PlayerInfo playerInfo)
+    {
+        if (!_playerInfos.ContainsKey(key))
+        {
+            _playerInfos[key] = playerInfo;
+        }
+    }
 
+    // -------------------------------------------------------------------------
+    // 类	    :	GetPlayerInfo
+    // 介绍		:	获取目标值的PlayerInfo
+    // -------------------------------------------------------------------------
+    public PlayerInfo GetPlayerInfo(int key)
+    {
+        PlayerInfo info = null;
+        if (_playerInfos.TryGetValue(key, out info))
+        {
+            return info;
+        }
+        return null;
+    }
 }
